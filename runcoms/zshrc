@@ -12,6 +12,9 @@ fi
 
 # Customize to your needs...
 
+# For the 'completion' prezto plugin (zsh-completions, internally)
+autoload -U compinit; compinit
+
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias vi='vim'
