@@ -17,7 +17,13 @@ autoload -U compinit; compinit
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias vi='vim'
+alias vi='nvim'
+alias nvimdiff='nvim -d'
+alias vimdiff='nvimdiff'
+export VISUAL="nvim"
+export EDITOR="nvim"
+
+set -o vi
 
 export LANG=en_US.UTF-8
 
