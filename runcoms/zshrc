@@ -48,11 +48,15 @@ export PATH=$PATH:$HOME/pkg/protoc/bin
 source $HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
-# pip install path
-export PATH=$PATH:$HOME/.local/bin
+# python (installed by brew)
+if [[ $(uname) == "Darwin" ]]; then
+  export PATH=/opt/homebrew/opt/python@3.10/bin:/opt/homebrew/opt/python@3.10/libexec/bin:$PATH
+fi
 
 # pbcopy
-alias pbcopy='xclip -selection clipboard'
+if [[ $(uname) != "Darwin" ]]; then
+  alias pbcopy='xclip -selection clipboard'
+fi
 
 # fzf: follow symlinks and include hidden files
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -63,3 +67,17 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# flutter
+export PATH=$PATH:$HOME/flutter/bin
+
+# nim
+export PATH=$HOME/.nimble/bin:$PATH
+
+# ruby
+eval "$(rbenv init - zsh)"
+
+# IntelliJ IDEA
+if [[ $(uname) == "Darwin" ]]; then
+  export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
+fi
