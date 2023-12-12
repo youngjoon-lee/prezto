@@ -81,3 +81,6 @@ eval "$(rbenv init - zsh)"
 if [[ $(uname) == "Darwin" ]]; then
   export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 fi
+
+# GPG
+export GPG_TTY=$(tty)
