@@ -45,7 +45,6 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/pkg/protoc/bin
 
 # rust
-source $HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
 # python (installed by brew)
@@ -62,7 +61,9 @@ fi
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ $(uname) == "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
