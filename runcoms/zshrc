@@ -54,7 +54,8 @@ fi
 
 # pbcopy
 if [[ $(uname) != "Darwin" ]]; then
-  alias pbcopy='xclip -selection clipboard'
+  # alias pbcopy='xclip -selection clipboard'
+  alias pbcopy='wl-copy'
 fi
 
 # fzf: follow symlinks and include hidden files
@@ -68,15 +69,13 @@ fi
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # flutter
 export PATH=$PATH:$HOME/flutter/bin
 
 # nim
 export PATH=$HOME/.nimble/bin:$PATH
-
-# ruby
-eval "$(rbenv init - zsh)"
 
 # IntelliJ IDEA
 if [[ $(uname) == "Darwin" ]]; then
