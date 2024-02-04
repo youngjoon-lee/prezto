@@ -77,6 +77,12 @@ export PATH=$PATH:$HOME/flutter/bin
 # nim
 export PATH=$HOME/.nimble/bin:$PATH
 
+<<<<<<< Updated upstream
+=======
+# ruby
+#eval "$(rbenv init - zsh)"
+
+>>>>>>> Stashed changes
 # IntelliJ IDEA
 if [[ $(uname) == "Darwin" ]]; then
   export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
@@ -84,3 +90,14 @@ fi
 
 # GPG
 export GPG_TTY=$(tty)
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Yazi: change the current working directory when exiting Yazi
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
