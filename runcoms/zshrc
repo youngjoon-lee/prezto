@@ -57,8 +57,8 @@ fi
 
 # pbcopy
 if [[ $(uname) != "Darwin" ]]; then
-  alias pbcopy='xclip -selection clipboard'
-  # alias pbcopy='wl-copy'
+  #alias pbcopy='xclip -selection clipboard'
+  alias pbcopy='wl-copy'
 fi
 
 # fzf: follow symlinks and include hidden files
@@ -97,5 +97,7 @@ function ya() {
 	rm -f -- "$tmp"
 }
 
+export PATH=$PATH:$HOME/.yarn/bin
 # Finish profiling
 #zprof
+#
