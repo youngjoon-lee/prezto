@@ -96,5 +96,15 @@ fi
 # yarn
 export PATH=$PATH:$HOME/.yarn/bin
 
+# PyCharm
+if [[ $(uname) != "Darwin" ]]; then
+  export PATH=/opt/pycharm-professional/bin:$PATH
+fi
+
+# ssh-agent
+if [[ $(uname) != "Darwin" ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 # Finish profiling
 #zprof
