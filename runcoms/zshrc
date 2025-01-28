@@ -31,7 +31,7 @@ export LANG=en_US.UTF-8
 export REPOS=$HOME/repos
 
 # Load Git completion
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/.zprezto/git-completion.bash
 fpath=(~/.zsh $fpath)
 
 export PATH=$PATH:$HOME/bin
