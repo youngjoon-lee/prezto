@@ -105,6 +105,8 @@ fi
 if [[ $(uname) != "Darwin" ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
+# Let keychain run `ssh-add` automatically
+eval $(keychain --eval --quiet id_rsa)
 
 # Finish profiling
 #zprof
