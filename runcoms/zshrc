@@ -108,5 +108,13 @@ fi
 # Let keychain run `ssh-add` automatically
 eval $(keychain --eval --quiet id_ed25519)
 
+# Switch the npm global dir
+mkdir -p $HOME/.npm-global
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Run direnv automatically
+eval "$(direnv hook zsh)"
+
 # Finish profiling
 #zprof
+
