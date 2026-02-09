@@ -6,7 +6,7 @@
 #
 
 # Enable profiler
-#zmodload zsh/zprof
+zmodload zsh/zprof
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -20,6 +20,7 @@ autoload -U compinit; compinit
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
+alias cl='column -s, -t'
 alias nvimdiff='nvim -d'
 export VISUAL=nvim
 export EDITOR=nvim
@@ -64,16 +65,8 @@ if [[ $(uname) == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # flutter
 export PATH=$PATH:$HOME/flutter/bin
-
-# nim
-export PATH=$HOME/.nimble/bin:$PATH
 
 # ruby
 #eval "$(rbenv init - zsh)"
@@ -104,17 +97,19 @@ fi
 # ssh-agent
 if [[ $(uname) != "Darwin" ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+  # Let keychain run `ssh-add` automatically
+  eval $(keychain --eval --quiet id_ed25519)
 fi
-# Let keychain run `ssh-add` automatically
-eval $(keychain --eval --quiet id_ed25519)
-
-# Switch the npm global dir
-mkdir -p $HOME/.npm-global
-export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Run direnv automatically
 eval "$(direnv hook zsh)"
 
-# Finish profiling
-#zprof
+# OpenBLAS
+if [[ $(uname) == "Darwin" ]]; then
+  export LDFLAGS="-L/opt/homebrew/opt/openblas/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/openblas/include"
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/openblas/lib/pkgconfig"
+fi
 
+# Finish profiling
+zprof
