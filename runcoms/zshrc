@@ -123,5 +123,8 @@ export FNM_RESOLVE_ENGINES="true"
 export FNM_ARCH="arm64"
 rehash
 
+# zellij
+alias z='zellij'
+
 # Finish profiling
 #zprof
