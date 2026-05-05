@@ -128,6 +128,7 @@ alias z='zellij'
 
 export PATH=~/.npm-global/bin:$PATH
 
+alias t="$HOME/repos/me/arch/scripts/deepl.sh"
 alias tk="$HOME/repos/me/arch/scripts/deepl.sh ko"
 alias te="$HOME/repos/me/arch/scripts/deepl.sh en"
 
